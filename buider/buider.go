@@ -150,10 +150,14 @@ func main() {
 		WithAge(22).
 		WithFName("Nguyen").
 		WithLName("Hiro").
-		AtStreet("Le Quan").
-		AtWard("Thach Khoi").
-		InProvince("Hai Duong").
-		InCountry("Viet Nam").
+		At(
+			NewAddressBuilder().
+				AtStreet("Le Quan").
+				AtWard("Thach Khoi").
+				InProvince("Hai Duong").
+				InCountry("Viet Nam").
+				Build(),
+		).
 		Build()
 	if v, e := json.Marshal(student1); e == nil {
 		fmt.Println(string(v))
